@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>文档元素</title>
+</head>
+<body>
+<header>
+    <!--标题绑定-->
+    <hgroup>
+        <h1>这是一个大标题h1</h1>
+        <h4>这是一个副标题h4</h4>
+    </hgroup>
+    <nav>
+        这里是一个导航
+    </nav>
+    这是网页开头部分：LOGO,标题，导航等
+</header>
+
+<section>
+    这里是文档的主题部分
+    <figure>
+        <figcaption>网页文档结构图</figcaption>
+        <img src="../source/doc_struct.jpg" >
+    </figure>
+
+</section>
+
+<article>
+    <header>...</header>
+    <section>...</section>
+    <footer>...</footer>
+</article>
+<footer>
+    这是网页的尾部，一般包括：版权声明，友情链接
+    <address>adress</address>
+</footer>
+
+<h1>embedde嵌入元素</h1>
+<figure>
+    <figcaption>嵌入元素列表图</figcaption>
+    <!--alt表示图片加载失败时替代的文字-->
+    <a href="#"><img ismap src="../source/embedded.jpg" alt="风景图"></a>
+</figure>
+
+<h4>map创建分区响应图（用DW）</h4>
+<h5>通过图片中的热点进行超链接，采用Dreamweaver进行操作生成</h5>
+<img src="../source/test.jpg" alt="test" usemap="#Map">
+<map name="Map">
+  <area shape="poly" coords="67,21,63,33,68,38,76,42,83,40,88,33,89,27,89,23,84,17,83,16,71,17,68,19,67,20" href="#" target="_blank" alt="百度">
+  <area shape="rect" coords="22,66,112,110" href="#" target="_top" alt="搜搜">
+</map>
+</body>
+</html>
