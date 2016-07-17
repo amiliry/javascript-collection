@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+</head>
+<body style="background: #f4eddb;">
+<header>
+    <ul>
+        <li style="color: purple"><h4>Form表单（表单元素用于获取用户的输入数据）</h4></li>
+        <li>属性</li>
+        <li>action表示提交的页面（eg：http://www.baidu.com）</li>
+        <li>method表示表单请求方式，有post和get（默认）两种。使用post后台才可以接收到数据</li>
+        <li>name设置表格，方便调用</li>
+        <li>target设置提交时的目标位置：_blank(新窗口) _parent(框架页面中的当前整个窗口) _self(当前窗口) _top(框架页面中的上部窗口)</li>
+        <li>autocomplete设置浏览器记住用户输入的数据，默认on</li>
+        <li>novalidate设置是否执行客户端数据有效性检查</li>
+    </ul>
+    <ul>
+        <li style="color: purple"><h4>input元素</h4></li>
+        <li>autofocus表示光标聚焦</li>
+        <li>disabled表示禁用input元素</li>
+        <li>autocomplete单独设置input的自动完成功能</li>
+        <li>name必须写，定义名称，以便接收相应的值</li>
+        <li>type</li>
+        <li>form表单外的input元素与指定的表单挂钩提交</li>
+        <li>value默认初始值</li>
+    </ul>
+    <ul>
+        <li style="color: purple"><h4>label元素</h4></li>
+        <li>更好的用户体验，点击标签也可以进行光标聚焦输入</li>
+        <li>for属性，配合input的id标识，在只对标签进行属性设置时也绑定输入体验</li>
+    </ul>
+    <ul>
+        <li style="color: purple"><h4>fieldset分组元素</h4></li>
+        <li>name属性</li>
+        <li>form</li>
+        <li>disabled禁用分组</li>
+        <li>legend设置左上角分组名</li>
+    </ul>
+    <ul>
+        <li style="color: purple"><h4>button</h4></li>
+        <li>type属性（默认submit）</li>
+        <li></li>
+    </ul>
+</header>
+<form name="reg" id="register" method="get" action="http://www.baidu.com" target="_blank" autocomplete="on">
+    <fieldset disabled>
+        <label>
+            用户名：<input name="user" value="bbs" type="text" autofocus>
+        </label>
+    </fieldset><br><br>
+
+    <fieldset>
+        <legend>注册分组</legend>
+        <label for="sex">
+            性别：
+        </label>
+        <input id="sex" type="text" value="女"><br><br>
+
+        <label for="pwd">
+            密码：<input name="pwd" id="pwd" type="text">
+        </label><br><br>
+        <button>提交</button><br>
+    </fieldset><br>
+</form>
+    邮箱：<input name="email" form="register" autocomplete="off">
+
+</body>
+</html>

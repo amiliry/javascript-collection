@@ -5,6 +5,35 @@
     <title>VIDEO</title>
 </head>
 <body>
+controls设置后显示播放控件<br>
+autoplay设置后表示立刻开始不方视频<br>
+preload表示预先载入视频<br>
+——none表示什么都不加载。第一帧都没有，点击时才加载<br>
+——metadate播放之前只能加载元数据（宽高，第一帧画面等信息）<br>
+——auto(默认)请求时尽快加载，第一次看时加载好，第二次就可以直接看<br>
+loop表示反复播放视频<br>
+muted视频处于静音状态<br>
+poster指定视频数据载入时显示的图片<br>
+<!--<video src="../source/SHE.mp4" width="600" height="400" controls autoplay muted></video>-->
+<video src="../source/SHE.mp4" controls poster="../source/test.jpg"></video><br>
 
+<h1>兼容多个浏览器的问题</h1>
+<video width="600" height="400" controls>
+    <!--适应IE浏览器-->
+    <source src="../source/SHE.mp4">
+    <!--适应火狐谷歌浏览器-->
+    <source src="../source/SHE.webm">
+    <!--适应其他-->
+    <source src="../source/SHE.ogg">
+    <object>实现flash播放的插件，如果是IE9以上则不需要</object>
+</video><br>
+
+<h1>音频（浏览器格式兼容）</h1>
+<audio src="../source/test.mp3" controls></audio>
+<audio>
+    <source src="test.mp3">
+    <source src="test.m4a">
+    <source src="test.wav">
+</audio>
 </body>
 </html>
