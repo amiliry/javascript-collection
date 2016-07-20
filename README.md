@@ -2,7 +2,7 @@
 学习搜集js的常用例子与技术
 
 #jQuery studing.....
-基本格式：<br>
+基本格式：
 <script src="js/juery.js" type="text/javascript"....<br>
 <script src="js/input.js" type="text/javascript"....<br>
 
@@ -10,7 +10,7 @@ $("document").ready(function(){
 .....
 });
 
---input输入框设置格式：
+input输入框设置格式：
 （1）type: 一般设置成text,如果是密码则设置成password
 （2）autocomplete:自动补齐，关闭off  否则会显示之前浏览器记录过的账号
 （3）placeholder：HTML5新增，设置输入框初始值。
