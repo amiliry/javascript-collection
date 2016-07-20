@@ -3,8 +3,8 @@
 
 #jQuery studing.....
 基本格式：
-####<script src="js/juery.js" type="text/javascript"></script>
-####<script src="js/input.js" type="text/javascript"></script>
+<script src="js/juery.js" type="text/javascript"
+<script src="js/input.js" type="text/javascript"
 
 $("document").ready(function(){
 .....
