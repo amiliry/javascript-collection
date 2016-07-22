@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+		<style>
+			*{margin:0;/*外边距*/ padding:0; /*内边距*/} 
+			body,html{
+				width:100%;
+				height:100%
+			}
+			#bg{                  /*后代中宽高100%，必须父亲是100%才能检查到*/
+				width:100%;
+				height:100%;
+				background:url('images/bg_pic1.jpg') center top;
+				background-size:cover;
+			}
+			.but{
+			width:100%;
+			height:40px;
+			background:rgba(0,0,0,0.5);
+			position:fixed;/*固定定位*/
+			left:0;
+			top:0;
+			color:#fff;
+			line-height:40px;
+			text-indent:50px;
+		    }
+			.nav-box{
+				width:100%;
+				height:400px;
+				background:#fff;
+				position:fixed;
+				left:0;
+				top:0;
+				display:none;
+				
+			}
+			.nav-box .pic-list{
+				width:1000px;
+				height:300px;
+				margin:80px auto 0;/*上，左右，下*/
+			}
+			.nav-box .pic-list ul li{
+				list-style:none;
+				width:170px;
+				height:107px;
+				border:5px solid #fff;
+				float:left;
+				margin:10px;
+				box-shadow:1px,1px,2px,#5d5d5d;
+				position:relative;
+			}
+			.nav-box .pic-list ul li img{
+				width:170px;
+				height:107px;
+			}
+			.nav-box .pic-list ul li .ioc{
+				width:18px;
+				height:18px;
+				background:url('images/ioc.png') 80px 0;
+				position:absolute;
+				right:10px;
+				bottom:10px;
+				display:none;
+			}
+			.nav-box .pic-list ul li.first .ioc{ /*组合后代选择器，li.first写在一起*/
+			display:block;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="bg"></div>
+		<div class="but">换肤</div>
+		<div class="nav-box">
+			<div class="pic-list">
+				<ul>
+					<li class="first" detasrc="bg_pic1.jpg">
+						<img src="images/bg_pic1.jpg" />
+						<span class="ioc"></span>
+					</li>
+					<li detasrc="bg_pic2.jpg">
+						<img src="images/bg_pic2.jpg" />
+						<span class="ioc"></span>
+					</li>
+					<li detasrc="bg_pic3.jpg">
+						<img src="images/bg_pic3.jpg" />
+						<span class="ioc"></span>
+					</li>
+					<li detasrc="bg_pic4.jpg">
+						<img src="images/bg_pic4.jpg" />
+						<span class="ioc"></span>
+					</li>
+					<li detasrc="bg_pic5.jpg">
+						<img src="images/bg_pic5.jpg" />
+						<span class="ioc"></span>
+					</li>
+					<li detasrc="bg_pic6.jpg">
+						<img src="images/bg_pic6.jpg" />
+						<span class="ioc"></span>
+					</li>
+					<li detasrc="bg_pic7.jpg">
+						<img src="images/bg_pic7.jpg" />
+						<span class="ioc"></span>
+					</li>
+					<li detasrc="bg_pic8.jpg">
+						<img src="images/bg_pic8.jpg" />
+						<span class="ioc"></span>
+					</li>
+					<li detasrc="bg_pic9.jpg">
+						<img src="images/bg_pic9.jpg" />
+						<span class="ioc"></span>
+					</li>
+					<li detasrc="bg_pic10.jpg">
+						<img src="images/bg_pic10.jpg" />
+						<span class="ioc"></span>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+		<script src="js/jquery-2.1.4.js"></script>
+		<script>
+			$(".but").click(function(){
+				$(".nav-box").slideDown(1000);
+			})
+			$(".pic-list ul li").click(function(){
+				var imgs = $(this).attr("detasrc");
+				$("#bg").css({"background-image":"url('images/"+imgs+"')"});
+				$(this).addClass("first").siblings().removeClass("first");
+			})
+			$("#bg").click(function(){
+				$(".nav-box").slideUp();
+			})
+		</script>
+	</body>
+</html>
