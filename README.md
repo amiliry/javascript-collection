@@ -3,9 +3,15 @@
 
 ##JS特效学习目录Special Effects
 ####SE1_bg_skin——PC背景换肤效果<br />
-<img src="javascript-collection/SE1_bg_skin/images/1.png"><br />
-<img src="javascript-collection/SE1_bg_skin/images/2.png"><br />
-
+<p>
+	<img src="http://img.blog.csdn.net/20160722120514093?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" width="600px" height="300px" />
+</p>
+<p>
+	<span style="font-family:Microsoft YaHei;font-size:14px;color:#cc33cc;"><em>点击换肤后效果如下：</em></span>
+</p>
+<p>
+	<img src="http://img.blog.csdn.net/20160722121126186?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="" width="600px" height="300px" />
+</p>
 #jQuery studing.....<br />
 
 <p>
