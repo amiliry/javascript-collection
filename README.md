@@ -1,6 +1,11 @@
 # javascript-collection
 学习搜集js的常用例子与技术
 
+##JS特效学习目录Special Effects
+####SE1_bg_skin——PC背景换肤效果<br />
+<img src="javascript-collection/SE1_bg_skin/images/1.png"><br />
+<img src="javascript-collection/SE1_bg_skin/images/2.png"><br />
+
 #jQuery studing.....<br />
 
 <p>
