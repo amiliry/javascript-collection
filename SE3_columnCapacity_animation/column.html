@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+<!-- Based on Tony Pinkevich's design: https://dribbble.com/shots/2103470-Black-Cat-gif -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>圆柱体容器</title>
+<link href="column.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<div class="box">
+		<div class="column-height"></div>
+		<div class="column-top"></div>
+		<div class="column-bottom"></div>
+		
+		<div class="cover"></div>
+		
+		<div class="box-height"></div>
+		<div class="box-top"></div>
+	    <div class="box-bottom"></div>
+	</div>
+	</br>
+	<div>
+		<label for="percent">请输入百分比（如20）
+			<input id="percent" type="text" value="" onblur="calculate()"></br>
+		</label>
+	</div>
+	
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/JavaScript">
+	    function calculate()
+	    {
+	        var total=39;
+	        var percent= $("#percent").val();
+	        var actrol = total*percent*0.01;
+			var minus = 39-actrol;
+			var column_top_top=6+minus;
+			var column_height_top=14+minus;
+			$(".column-top").animate({ top:column_top_top+"px"},1500);
+			$(".column-height").animate({ top:column_height_top+"px",height:actrol+"px"},1500);
+	    }
+		
+	</script>
+</body>
+</html>

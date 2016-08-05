@@ -1,0 +1,89 @@
+.box-top {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  height: 18px;
+  width: 46px;
+  background:transparent;
+  border: 1px solid #b7bdc2;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  z-index:3;
+}
+.box-height {
+  position: absolute;
+  top: 11.5px;
+  left: 1px;
+  height: 40px;
+  width: 46px;
+  background:transparent;
+  border: 1px solid #b7bdc2;
+  border-top:0px;
+  border-bottom:0px;
+}
+.box-bottom {
+  position: absolute;
+  top: 43px;
+  left: 1px;
+  height: 20px;
+  width: 46px;
+  background:transparent;
+  border: 1px solid #b7bdc2;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  z-index:-2;
+}
+.cover {
+  position: absolute;
+  top: 40px;
+  left: 1px;
+  height: 15px;
+  width: 46px;
+  background:#fff;
+  border: 1px solid #b7bdc2;
+  border-top:0px;
+  border-bottom:0px;
+  z-index:-1;
+}
+
+
+.column-top {
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  height: 15px;
+  width: 40px;
+  background: #d4d8dd;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+   z-index:2;
+}
+.column-height {
+  position: absolute;
+  top: 14px;
+  left: 5px;
+  height: 38px;
+  width: 40px;
+  background: #667a90;
+  z-index:1;
+}
+
+.column-bottom {
+  position: absolute;
+  top: 45px;
+  left:5px;
+  height: 15px;
+  width: 40px;
+  background: #667a90;
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+}
+/* General page styling */
+html {
+
+  height: 100%;
+  width: 100%;
+}
+
+.box{
+  position: relative;
+  height: 65px;
+  width: 50px;
+}
+
