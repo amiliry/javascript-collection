@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <link href="../source/1.css" rel="stylesheet" type="text/css">
+    <script src="../javascript/123.js"></script>
+    <title>css 背景属性</title>
+	<style>
+		
+		body{
+			background:url(image/2.jpg);
+			background-attachment:fixed;/*页面背景图片不变，页面内容滑动*/
+		}
+		
+		.divOne{
+		width:300px;
+		height:300px;
+		background-color:red;
+		}
+		.divTwo{
+		width:300px;
+		height:300px;
+		background-image:url(image/1.png);
+		background-repeat:no-repeat;
+		}
+		.divThree{
+		width:300px;
+		height:300px;
+		background-color:red;
+		background-image:url(image/1.png);
+		background-repeat:no-repeat;
+		background-position:right center;/*默认第二个垂直方向上的属性为center*/
+		
+		}
+		
+		div[class ^="div"]{/*设置类以div开头的样式*/
+		width:300px;
+		height:300px;
+		}
+	</style>
+</head>
+<body>
+	<div class="divOne"></div>
+	<div class="divTwo"></div>
+	<div class="divThree"></div>
+</body>
+</html>

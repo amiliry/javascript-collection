@@ -1,0 +1,223 @@
+﻿<!--
+纯CSS常用Sub Tab扁平化导航菜单，兼容IE7+
+Copyright  (c) 2006-2015 [DR] Kunming Dongring INC  All rights reserved.
+www.dongring.com 
+Author: ygzhang <ygzhang.cn@msn.com><qq 97572655>
+-->
+<!DOCTYPE html>
+<html language="zh-cn">
+<head>
+	<!--[if IE]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<title></title>
+	<style>
+
+	html {
+	  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	  -webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;
+	}
+	*, *:after, *:before {
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  box-sizing: border-box;
+	}
+
+	html, body {
+	    -ms-overflow-style: scrollbar;/*IE 10 11 12*/
+	}
+	::-webkit-scrollbar{width:10px;height:10px;}
+	::-webkit-scrollbar-button:vertical{display:none;}
+	::-webkit-scrollbar-track:vertical{background-color:black;}
+	::-webkit-scrollbar-track-piece{background-color:#f5f5f5;}
+	::-webkit-scrollbar-thumb:vertical{margin-right:10px; background-color:#a6a6a6;}
+	::-webkit-scrollbar-thumb:vertical:hover{background-color:#aaa;}
+	::-webkit-scrollbar-corner:vertical{background-color:#535353;}
+	::-webkit-scrollbar-resizer:vertical{background-color:#ff6e00;}
+
+	body{
+		margin:0;padding:0;
+		font-size:14px;line-height: 150%; text-align:center;color:#666;
+		font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+		background:#fff;
+		_background-image:url(about:blank);/*IE6下 用浏览器空白页面作为背景*/
+		_background-attachment:fixed; /* Prevent screen flash in IE6 确保滚动条滚动时，元素不闪动*/ 
+	}
+
+	h1,.h1,h2,.h2,h3,.h3,h4,.h4,.big-font{font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif}
+
+	.transition-duration,
+	.transition-duration a,
+	.transition-duration img{
+		-webkit-transition-duration: 0.4s;
+		-moz-transition-duration: 0.4s;
+		-o-transition-duration: 0.4s;
+	}
+	/*
+	纯CSS常用Sub Tab扁平化导航菜单，兼容IE7+
+	Copyright  (c) 2006-2015 [DR] Kunming Dongring INC  All rights reserved.
+	www.dongring.com 
+	Author: ygzhang <ygzhang.cn@msn.com><qq 97572655>
+	*/
+
+	.sub-tabs-menu{position:relative;z-index:99;clear:both;overflow:hidden;margin:0;padding:0;height:50px;background-color:transparent;}
+	.sub-tabs-menu .sub-tabs-line{position:absolute;bottom:0;left:0;z-index:100;overflow:hidden;width:100%;height:49px;border-bottom:1px solid #ccc;}
+	.sub-tabs-menu .sub-tabs-links{position:absolute;bottom:0;left:0;z-index:101;overflow:hidden;width:100%;height:49px;text-overflow:ellipsis;}
+	.sub-tabs-links a,
+	.sub-tabs-links .this-title{position:relative;z-index:102;float:left;display:block;margin:0;padding:0 15px;height:49px;line-height:49px;color:#333;text-align: center;text-decoration:none;text-overflow:ellipsis;font-weight:700;font-size:14px;overflow:hidden;}
+	.sub-tabs-links .this-title{font-size:16px;}
+	.sub-tabs-links a h1,
+	.sub-tabs-links a p,
+	.sub-tabs-links .this-title h1,
+	.sub-tabs-links .this-title p{margin: 0;padding: 0;text-align: center;}
+	.sub-tabs-links a i,
+	.sub-tabs-links .this-title i{float:left;margin:8px 10px 0 0px;color:#999;font-size:18px;font-weight: normal;}
+	.sub-tabs-links .this-title i{margin:8px 10px 0 -15px;}
+	.sub-tabs-links a em,
+	.sub-tabs-links .this-title em{position:absolute;bottom:0;left:0;z-index:103;margin:0;padding:0;width:100%;height:5px;background: transparent;overflow:hidden;}
+	.sub-tabs-links a:hover,
+	.sub-tabs-links a.this-hover{color: #ff9900}
+	.sub-tabs-links .this-on,
+	.sub-tabs-links .this-on:hover{color:#3bbaa7;}
+
+	.sub-tabs-links a:hover em,
+	.sub-tabs-links a.this-hover em{background: #ff9900}
+	.sub-tabs-links .this-on em,
+	.sub-tabs-links .this-on:hover em,
+	.sub-tabs-links .this-title-on{background: #3bbaa7;color: #fff}
+
+
+	.sub-tabs-menu-rows{height:65px;}
+	.sub-tabs-menu-rows .sub-tabs-line{height:64px;}
+	.sub-tabs-menu-rows .sub-tabs-links{height:64px;}
+	.sub-tabs-menu-rows .sub-tabs-links a,
+	.sub-tabs-menu-rows .sub-tabs-links .this-title{height:64px;line-height:80px;font-size:16px;}	
+	.sub-tabs-menu-rows .sub-tabs-links a h1{height:36px;line-height: 36px;font-size:16px;}
+	.sub-tabs-menu-rows .sub-tabs-links a p{height:16px;line-height: 16px;font-size:12px;}
+	.sub-tabs-menu-rows .sub-tabs-links .this-title h1{height:36px;line-height: 36px;font-size:16px;}
+	.sub-tabs-menu-rows .sub-tabs-links .this-title p{height:16px;line-height: 16px;font-size:12px;}
+	/*
+	纯CSS常用Sub Tab扁平化导航菜单，兼容IE7+
+	Copyright  (c) 2006-2015 [DR] Kunming Dongring INC  All rights reserved.
+	www.dongring.com 
+	Author: ygzhang <ygzhang.cn@msn.com><qq 97572655>
+	*/
+	.sub-tabs-menu-left{width:200px;height:100%;}
+	.sub-tabs-menu-left .sub-tabs-line{width:199px;height:100%;border-bottom: none;border-right: 1px solid #ccc}
+	.sub-tabs-menu-left .sub-tabs-links{width:199px;height:100%;}
+	.sub-tabs-menu-left .sub-tabs-links a,
+	.sub-tabs-menu-left .sub-tabs-links .this-title{float:none;height:49px;line-height:49px;font-size:16px;}	
+	.sub-tabs-menu-left .sub-tabs-links a h1{height:36px;line-height: 36px;font-size:16px;}
+	.sub-tabs-menu-left .sub-tabs-links a p{height:16px;line-height: 16px;font-size:12px;}
+	.sub-tabs-menu-left .sub-tabs-links .this-title h1{height:36px;line-height: 36px;font-size:16px;}
+	.sub-tabs-menu-left .sub-tabs-links .this-title p{height:16px;line-height: 16px;font-size:12px;}
+	.sub-tabs-menu-left .sub-tabs-links a em,
+	.sub-tabs-menu-left .sub-tabs-links .this-title em{bottom:0;left:auto;right:0;width:5px;height:100%;}
+
+	.sub-tabs-menu-rows.sub-tabs-menu-left .sub-tabs-links a,
+	.sub-tabs-menu-rows.sub-tabs-menu-left .sub-tabs-links .this-title{float:none;height:64px;line-height:80px;font-size:16px;}
+
+	</style>
+</head>
+<body class="transition-duration">
+	<div style="padding:20px;">
+		<div class="sub-tabs-menu">
+				<div class="sub-tabs-line"></div>
+				<div class="sub-tabs-links">
+					<b class='this-title this-on'>Title<em></em></b>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null" class='this-on'>This is a menu<em></em></a>
+					<a href="#null" class='this-hover'>This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+				</div>
+		</div>
+	</div>
+	<div style="padding:20px;">
+		<div class="sub-tabs-menu">
+				<div class="sub-tabs-line"></div>
+				<div class="sub-tabs-links">
+					<b class='this-title this-title-on'>Title</b>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null" class='this-on'>This is a menu<em></em></a>
+					<a href="#null" class='this-hover'>This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+				</div>
+		</div>
+	</div>
+	<div style="padding:20px;">
+		<div class="sub-tabs-menu sub-tabs-menu-rows">
+				<div class="sub-tabs-line"></div>
+				<div class="sub-tabs-links">
+					<div class='this-title this-title-on'><h1>TitleAA</h1><p>Small title</p></div>
+					<a href="#null"><h1>Title</h1><p>Small title</p><em></em></a>
+					<a href="#null" class='this-on'><h1>Title</h1><p>Small title</p><em></em></a>
+					<a href="#null" class='this-hover'>This is a menu<em></em></a>
+					<a href="#null"><h1>Title</h1><p>Small title</p><em></em></a>
+					<a href="#null"><h1>Title</h1><p>Small title</p><em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+				</div>
+		</div>
+	</div>
+	<div style="padding:20px;height:600px;float:left">
+		<div class="sub-tabs-menu sub-tabs-menu-left">
+				<div class="sub-tabs-line"></div>
+				<div class="sub-tabs-links">
+					<div class='this-title this-on'>Title<em></em></div>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null" class='this-on'>This is a menu<em></em></a>
+					<a href="#null" class='this-hover'>This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+				</div>
+		</div>
+	</div>
+	<div style="padding:20px;height:600px;float:left">
+		<div class="sub-tabs-menu sub-tabs-menu-left">
+				<div class="sub-tabs-line"></div>
+				<div class="sub-tabs-links">
+					<div class='this-title this-title-on'>Title</div>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null" class='this-on'>This is a menu<em></em></a>
+					<a href="#null" class='this-hover'>This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+				</div>
+		</div>
+	</div>
+	<div style="padding:20px;height:600px;float:left">
+		<div class="sub-tabs-menu sub-tabs-menu-rows sub-tabs-menu-left">
+				<div class="sub-tabs-line"></div>
+				<div class="sub-tabs-links">
+					<div class='this-title this-title-on'><h1>Title</h1><p>Small title</p></div>
+					<a href="#null"><h1>Title</h1><p>Small title</p><em></em></a>
+					<a href="#null" class='this-on'><h1>Title</h1><p>Small title</p><em></em></a>
+					<a href="#null" class='this-hover'>This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+					<a href="#null">This is a menu<em></em></a>
+				</div>
+		</div>
+	</div>
+	<div style="padding:20px;">
+		<p>纯CSS常用Sub Tab扁平化导航菜单，兼容IE7+</p>
+		<p>Copyright  (c) 2006-2015 [DR] Kunming Dongring INC  All rights reserved.</p>
+		<p>www.dongring.com</p>
+		<p>Author: ygzhang [ygzhang.cn@msn.com][qq 97572655]</p>
+	</div>
+</body>
+</html>
