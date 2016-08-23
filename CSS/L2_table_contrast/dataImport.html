@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html language="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>源数据导入对比</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/dataImport.css">
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+</head>
+
+<body background="#fff">
+	<div id="wrapper">
+		<table class="table table-hover" style="text-align:center;">
+			<thead>
+				<tr height="60px">
+					<th width="200px"></th>
+					<th class="odd" style="border-top-left-radius:10px;border-top-right-radius:10px;text-align:center;"><h5><img src="img/dataCurrent.png" width="25px"><b>&nbsp;当前值</b></h5></th>
+					<th width="50px"></th>
+					<th class="even" style="border-top-left-radius:10px;border-top-right-radius:10px;text-align:center;"><h5><img src="img/import.png" width="25px"><b>&nbsp;源数据</b></h5></th>
+				</tr>
+			<thead>
+			<tbody>
+				<tr>
+					<th style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第一行</th>
+					<td class="odd">12</td>
+					<td><a class="arrow" href="#" onclick="dataCopy(this)"><img src="img/arrow.png" width="20px"></a></td>
+					<td class="even">123</td>
+				</tr>
+				<tr>
+					<th style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第二行</th>
+					<td class="odd">20160819</td>
+					<td><a class="arrow" href="#" onclick="dataCopy(this)"><img src="img/arrow.png" width="20px"></a></td>
+					<td class="even">20160819</td>
+				</tr>
+				<tr>
+					<th style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第三行</th>
+					<td class="odd">123</td>
+					<td><a class="arrow" href="#" onclick="dataCopy(this)"><img src="img/arrow.png" width="20px"></a></td>
+					<td class="even">123</td>
+				</tr>
+				<tr>
+					<th style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第四行</th>
+					<td class="odd">12</td>
+					<td><a class="arrow" href="#" onclick="dataCopy(this)"><img src="img/arrow.png" width="20px"></a></td>
+					<td class="even">123</td>
+				</tr>
+				<tr>
+					<th style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第五行</th>
+					<td class="odd">12</td>
+					<td><a class="arrow" href="#" onclick="dataCopy(this)"><img src="img/arrow.png" width="20px"></a></td>
+					<td class="even">123</td>
+				</tr>
+				<tr>
+					<th style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第六行</th>
+					<td class="odd">123</td>
+					<td><a class="arrow" href="#" onclick="dataCopy(this)"><img src="img/arrow.png" width="20px"></a></td>
+					<td class="even">123</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<script>
+		$('#wrapper td.odd').each(function(index,item){
+			var self=$(this);
+			if(self.text()!=self.next().next().text()){
+				self.parent('tr').css('background','#f0f0f0');
+				self.css('color','red');
+				self.next().children().show();
+			}
+			else
+				self.next().children().hide();
+ 		});
+
+		function dataCopy(item){
+			//点击箭头复制源数据
+			var currentData=$(item).parent('td').prev();
+			var prevData=$(item).parent('td').next().text();
+			currentData.html(prevData);
+			currentData.css('color','black');
+			$(item).parents('tr').css('background','#fff');
+			$(item).hide();
+		}
+	</script>
+</body>
+</html>
