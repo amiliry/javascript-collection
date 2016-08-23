@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<meta charset="utf-8">
+			<meta name="Keywords" content="关键词，关键字">
+			<meta name="Description" content="描述">
+			<title>时间轴效果</title>
+			<style>
+			*{margin:0px;padding:0px;}
+			
+			body{
+				background:url('images/bg1.png') fixed;
+			}
+			
+			.con{
+				width:1000px;
+				margin:0 auto;
+			}
+			
+			.con dl dd{
+				font-size:14px;
+				color:#666;
+				text-align:center;/*文本对齐方式*/
+				line-height:30px;/*行高*/
+			}
+			.con .txtlist{
+				width:600px;
+				margin-left:300px;
+				border-left:2px solid #0099ff;
+				padding-left:10px;
+			}
+			
+			.con .txtlist ul li{
+				width:590px;
+				height:400px;
+				background:rgba(255,255,255,0.5);
+				margin-bottom:25px;
+				list-style:none;
+				margin-left:10px;
+				border-radius:10px;
+				box-shadow:2px 2px 5px #666;
+				position:relative;/*相对定位 参照物*/
+				-webkit-animation: sc 2s;/*定义一个动画,兼容谷歌*/
+				/*名字 动画时间2s */
+				display:none;
+			}
+			
+			.con .txtlist ul li .time{
+				width:90px;
+				height:35px;
+				background:#181818;
+				position:absolute;/*绝对定位*/
+				color:#fff;
+				text-align:center;
+				line-height:30px;
+				left:-130px;
+				top:120px;
+			}
+			
+			.con .txtlist ul li  .ioc{
+				position:absolute;
+				left:-43px;
+				top:130px;
+			}
+			
+			.con .txtlist ul li  .circle{
+				width:6px;
+				height:6px;
+				background:#99ff33;
+				position:absolute;
+				border:2px solid #fff;
+				border-radius:50%;
+				left:-26px;
+				top:133px;
+			}
+			/*执行动画*/
+			@-webkit-keyframes sc{
+				from{-webkit-transform:rotate(220deg) scale(0.2)}
+				to{-webkit-transform:rotate(0deg) scale(1) }
+				/*
+				或者
+				0%{}
+				100%{}
+				*/
+			}
+			</style>
+	</head>
+	<body>
+		<div class="con">
+			<dl>
+				<dt><img src="images/my.jpg" width="100" height="120" alt="李琪"></dt>
+				<dd>时光轴</dd>
+			</dl>
+			<div class="txtlist">
+				<ul>
+					<li>
+						<div class="time">8月23日</div>
+						<img class="ioc" src="images/r.png" width="16" height="16" alt="箭头" />
+						<span class="circle"></span>
+					</li>
+					<li>
+						<div class="time">8月23日</div>
+						<img class="ioc" src="images/r.png" width="16" height="16" alt="箭头" />
+						<span class="circle"></span>
+					</li>
+					<li>
+						<div class="time">8月23日</div>
+						<img class="ioc" src="images/r.png" width="16" height="16" alt="箭头" />
+						<span class="circle"></span>
+					</li>
+					<li>
+						<div class="time">8月23日</div>
+						<img class="ioc" src="images/r.png" width="16" height="16" alt="箭头" />
+						<span class="circle"></span>
+					</li>
+					<li>
+						<div class="time">8月23日</div>
+						<img class="ioc" src="images/r.png" width="16" height="16" alt="箭头" />
+						<span class="circle"></span>
+					</li>
+					<li>
+						<div class="time">8月23日</div>
+						<img class="ioc" src="images/r.png" width="16" height="16" alt="箭头" />
+						<span class="circle"></span>
+					</li>
+					<li>
+						<div class="time">8月23日</div>
+						<img class="ioc" src="images/r.png" width="16" height="16" alt="箭头" />
+						<span class="circle"></span>
+					</li>
+					<li>
+						<div class="time">8月23日</div>
+						<img class="ioc" src="images/r.png" width="16" height="16" alt="箭头" />
+						<span class="circle"></span>
+					</li>
+					<li>
+						<div class="time">8月23日</div>
+						<img class="ioc" src="images/r.png" width="16" height="16" alt="箭头" />
+						<span class="circle"></span>
+					</li>
+					<li>
+						<div class="time">8月23日</div>
+						<img class="ioc" src="images/r.png" width="16" height="16" alt="箭头" />
+						<span class="circle"></span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script>
+		//测试JQ是否引入成功
+		//alert($);
+		//jq如何获取对象  $代理jq函数 $('对象');
+		$('.con .txtlist ul li').show();/*找到序列号小于3 的li元素*/
+		//浏览器窗口滚动事件
+		$(window).scroll(function(){
+		//遍历没一个li
+			$('.con .txtlist ul li').each(function(){
+				var _index=$(this).index()+3;//获取当前的遍历对象的序列号
+				//判断滚动条高度和li到顶部的距离
+				var  top=$(window).scrollTop();//浏览器滚动条高度
+				var _height=$(this).offset().top;//得到当前li到顶部的距离 offset是坐标，两个值一个垂直一个水平方向
+				if(top<height){
+					$('.con .txtlist ul li:lt('+_index+')').show();
+					$('.con .txtlist ul li:lt('+_index+')').hide();
+					return false;//谁先满足就跳出执行each遍历
+				}
+			})
+		})
+		</script>
+	</body>
+</html>
