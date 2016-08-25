@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>配置</title>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/tabs.css" type="text/css" media="all" />
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	
+	<script type="text/javascript" src="js/pagescroller.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript">
+	function expNull(str){
+		if(str==null) str =  "" ; 
+		return str;
+	}
+	
+	$(document).ready(function(){
+		
+		String.prototype.endWith=function(endStr){
+		  var d=this.length-endStr.length;
+		  return (d>=0 && this.lastIndexOf(endStr)==d)
+		}
+
+		var this_top=0;
+		$(window).scroll(function () {
+			//顶部滚动固定导航栏
+			var obj_height=document.documentElement.scrollTop || document.body.scrollTop;
+			var a = $("#top-nav").offset().top;//获取div距离浏览器顶部高度
+			if(obj_height >= a){
+				$('.top-nav-fixed').hide();
+				var this_width = $("#top-nav").offset().width;
+				var this_left = $("#top-nav").offset().left;
+				$("#top-nav").css({"position":"fixed","left":"0px","top":"0px","z-index":"2","padding-left":"520px"});
+			}
+			else{
+				$("#top-nav").css({"position":"relative","left":"0px","top":"0px","padding-left":"520px","z-index":"2"});//当浏览器高度小于div原高度时去除浮动跟随,定位回到原位置
+			}
+
+
+			//当前显示页面高亮
+			var top_height=-50;
+			$("div#wrapper #main .section").each(function(){
+				var self=$(this);
+				if (obj_height >= top_height && obj_height <=(self.height()+top_height)) {
+					self.css({"background":"#fff"});
+				}
+				else{
+					self.css("background","#f9f9f9");
+				}
+				top_height+=self.height();
+			});	
+		});
+
+		
+		var navLabel=[];
+		navLabel[0]='【参数配置】';  
+		//获取参数类型（外键）
+		//每个参数类型中展示，所有该类型的参数，进行数值的配置
+		var responseParam = <console:invokeService serviceName='FuParamDefService.getProdParamList' params='${param.prodCode}'/>;
+		
+		var paramList=responseParam.result;
+		var len=paramList.length;
+		var paramHtml = "";
+		var j=1;
+		for(var i=0;i<len;i++){
+			if(i==0 ){
+				navLabel[j++] = paramList[i].PARAM_CLASS_NAME ;
+				paramHtml += '<div class="section"></br><h5 style="font-weight: bold;font-size:15px">'+paramList[i].PARAM_CLASS_NAME +'</h5></br><table class="table table-hover">';
+
+				}
+			else if(paramList[i].ORDER_NO != paramList[i-1].ORDER_NO ){
+				if(!paramHtml.endWith("</tr>")) 
+					paramHtml += "<td></td><td></td></tr>";
+				paramHtml += '</table></div><div class="section"></br><h5 style="font-weight: bold;font-size:15px">'+paramList[i].PARAM_CLASS_NAME +'</h5></br><table class="table table-hover">';
+				navLabel[j++] = paramList[i].PARAM_CLASS_NAME ;
+				}
+
+			if(paramHtml.endWith("</td>")) {
+				//根据数据字典进行判断，有内容时展示为select
+				if(paramList[i].DICT==null){
+					paramHtml +='<td style="padding:11px">'+ paramList[i].PARAM_NAME +'</td><td><input class="tc-15-input-text ml-30 mb-20" id="'+paramList[i].PARAM_CODE+'" value="'+expNull(paramList[i].PARAM_VAL)+'"/><input type="hidden" name="prodCode" value="'+ expNull(paramList[i].PROD_CODE) +'" ></td></tr>';
+				}
+				else{
+					paramHtml+='<td style="padding:11px">'+ paramList[i].PARAM_NAME +'</td><td><select class="tc-15-select ml-30 mb-20" id="'+paramList[i].PARAM_CODE+'"/>'
+					var str1=[];
+					str1=paramList[i].DICT.split(",");
+					for(var k=0;k<str1.length;k++){
+						var str2=[];
+						str2=str1[k].split(":");
+						if(str2[0]==expNull(paramList[i].PARAM_VAL))
+							paramHtml+='<option selected="selected" value="'+str2[0]+'">'+str2[1]+'</option>';
+						else
+							paramHtml+='<option value="'+str2[0]+'">'+str2[1]+'</option>';
+					}
+					paramHtml+='</select><input type="hidden" name="prodCode" value="'+ expNull(paramList[i].PROD_CODE) +'" ></td></tr>';
+				}
+					
+			}else{
+				//根据数据字典进行判断，有内容时显示为select
+				if(paramList[i].DICT==null){
+					paramHtml +='<tr><td style="padding:11px;width:116px;">'+ paramList[i].PARAM_NAME +'</td><td><input class="tc-15-input-text ml-30 mb-20" id="'+paramList[i].PARAM_CODE+'" value="'+expNull(paramList[i].PARAM_VAL) +'"/><input type="hidden" name="prodCode" value="'+expNull(paramList[i].PROD_CODE) +'" ></td>';	
+				}
+				else{
+					paramHtml +='<tr><td style="padding:11px;width:116px;">'+ paramList[i].PARAM_NAME +'</td><td><select class="tc-15-select ml-30 mb-20" id="'+paramList[i].PARAM_CODE+'"/>';
+					var str1=[];
+					str1=paramList[i].DICT.split(",");
+					for(var k=0;k<str1.length;k++){
+						var str2=[];
+						str2=str1[k].split(":");
+						if(str2[0]==expNull(paramList[i].PARAM_VAL))
+							paramHtml+='<option selected="selected" value="'+str2[0]+'">'+str2[1]+'</option>';
+						else
+							paramHtml+='<option value="'+str2[0]+'">'+str2[1]+'</option>';
+					}
+					paramHtml +='</select><input type="hidden" name="prodCode" value="'+expNull(paramList[i].PROD_CODE) +'" ></td>';
+				}
+			}
+
+			if(i==paramList.length-1){
+				if(paramHtml.endWith("</tr>")) 
+					paramHtml += "<td></td><td></td></tr>";
+					
+				paramHtml +='</table></div>';
+			}
+			
+		}
+
+
+		//动态加载表单
+		var html = document.getElementById("main").innerHTML;
+		document.getElementById("main").innerHTML = html +  paramHtml;
+	
+	
+		//获取左侧导航栏，参数类型选项卡
+		$('#main').pageScroller({ navigation: navLabel});
+		
+
+	});
+
+	
+	 //文本改变监听
+		var comitList = []
+		var prodcode;
+		$(document).on({ 
+			//给表单中的input绑定事件
+			change: function() { 
+			    // 将td中信息保存到comitlist 
+			   if($(this).attr("id")!="searchText"){
+			   	var self=$(this);
+			   	self.css('color','red');
+			   	prodcode=$(this).parent('td').find('input[name="prodCode"]').attr("value");
+			   	comitList.push({prodCode:prodcode,paramCode:self.attr("id"),paramVal:self.val()  });
+			   }
+			 }
+		},'#main input');
+		$(document).on({ 
+			//给select绑定事件
+			change: function() { 
+			    // 将td中信息保存到comitlist 
+			   var self=$(this);
+			   self.css('color','red');
+			   prodcode=$(this).parent('td').find('input[name="prodCode"]').attr("value");
+			   var paramVal=self.find('option:selected').attr("value");
+			   comitList.push({prodCode:prodcode,paramCode:self.attr("id"),paramVal:paramVal });
+			}
+		},'#main select');
+		
+</script>
+</head>
+
+<body>
+	<div class="top-nav-fixed"></div>
+	<div id="wrapper">
+		<div id="main">
+			<div class="section">
+				<div id="top-nav">
+					<nav class="navbar navbar-default">
+					   <div>
+						  <div class="navbar-form navbar-left" role="search">
+							 <div class="form-group">
+								<input id="searchText" type="text" class="form-control" style="height:28px;width:150px" placeholder="Search" autocomplete="off" onkeydown="enterSearchText(event);">
+							 </div>
+							 <a id="search" href="#" type="submit" class="btn btn-default" onclick="searchText();"><img style="width:15px" src="img/search.png" title="查找"></a>
+							 <a id="save" href="#" style="margin-left:30px" type="submit" class="btn btn-default" onclick="save();"><img style="width:18px" src="img/save.png" title="保存"></a>
+						  </div>    
+					   </div>
+					</nav>
+				</div>
+			</div>
+		</div><!-- [END] #main -->
+	</div><!-- [END] #wrapper -->
+	<div class="remind">
+		<span style="color:red">&nbsp;*&nbsp;</span>必填，<span style="color:red">红色</span>表示变动。
+	</div>
+	<script>
+	
+	function searchText(){
+		//关键字搜索
+		var keyword = $('#searchText').val();//搜索框中输入的关键字
+		//alert(keyword);
+		$('#main input, #main select').each(function(){
+			if($(this).attr("id")!="searchText"){
+			   		var self=$(this);
+			   		if(self.parent('td').prev().text().indexOf(keyword)<0){
+			   			self.parent('td').hide();
+			   			self.parent('td').prev().hide();
+			   		}
+					else {
+						self.parent('td').show();
+						self.parent('td').prev().show();
+					}
+			 }
+		});
+	};
+	
+	//按回车键，执行事件
+	function enterSearchText(event){
+		if (event.keyCode == 13)  
+      	 {  
+         	 searchText();  
+      	 }
+	}
+	
+	function save(){
+		//点击保存配置，向后台传参
+		var BASE_PATH = "/fdap",  to_url = "", serviceUrl="/fdap/services", isCache = false;
+		$.jsonRPC.init(serviceUrl,isCache);
+		var prodCode = "<%=request.getParameter("prodCode")  %>" ;
+		$.jsonRPC.request("FuProdPlusService.saveParams",{
+						params:[comitList,prodCode],
+						success:function(method, response){
+							var result = response.result;
+							if(!result) {
+								xyz.widget.tips.success("保存配置成功");
+							} else {
+								xyz.widget.tips.success("保存配置成功");
+							}
+							$('.close').click();
+						},
+						error : function(method, response) {
+								xyz.widget.tips.error("保存配置不成功:" + response.error.message);
+							}
+		});
+	};
+
+	</script>
+</body>
+</html>

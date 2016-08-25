@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>配置</title>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/tabs.css" type="text/css" media="all" />
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	
+	<script type="text/javascript" src="js/pagescroller.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		//左侧导航栏
+		var navLabel = new Array('【参数配置】','第一个', '第二个', '第三个', '第四个', '第五个','第六个','第七个','第八个','第九个');
+		
+		$('#main').pageScroller({ navigation: navLabel});
+	
+	
+	
+		var this_top=0;
+		$(window).scroll(function () {
+		//顶部滚动固定导航栏
+		var obj_height=document.documentElement.scrollTop || document.body.scrollTop;
+				var a = $("#top-nav").offset().top;//获取div距离浏览器顶部高度
+			if(obj_height >= a){
+				var this_width = $("#top-nav").offset().width;
+				var this_left = $("#top-nav").offset().left;
+				//var obj_width = $(window).width();//保证居中用的
+				$("#top-nav").css({"position":"fixed","left":(this_left),"top":"0px","background":"#fff","z-index":"2"});
+			}
+			else{
+				$("#top-nav").css({"position":"relative","left":"0","top":"0px","background":"#f9f9f9","z-index":"2"});//当浏览器高度小于div原高度时去除浮动跟随,定位回到原位置
+			}
+		
+		
+		//当前显示页面高亮
+		//var this_top=obj_height;
+		var top_height=-25;
+		var i=0;
+			$("div#wrapper #main .section").each(function(){
+			var self=$(this);
+				//alert(this_top);
+				if (obj_height >= top_height && obj_height <=(top_height+self.height())) {
+				//alert("滚动距离"+this_top+"nav高度"+top_height+"自身高度"+self.height());
+				self.css({"background":"#fff"});
+				}
+				else{
+				self.css("background","#f9f9f9");
+				}
+				top_height+=self.height()+45*i;
+				i++;
+			});	
+		});
+		
+		
+	});	
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="main">
+			<div class="section">
+				<h2>配置</h2></br>
+				<div id="top-nav">
+					<nav class="navbar navbar-default" role="navigation">
+					   <div>
+						  <form class="navbar-form navbar-left" role="search">
+							 <div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
+							 </div>
+							 <button type="submit" class="btn btn-default">提交</button>
+						  </form>    
+					   </div>
+					</nav>
+				</div>
+			</div>
+			<div class="section">
+				<h2>第一个</h2></br>
+				<div id="page1">
+							<table class="table table-hover">
+								<tr>
+									<td>代码</td>
+									<td><input></td>
+									<td>类型</td>
+									<td><input></td>
+								</tr>
+								<tr>
+									<td>简称</td>
+									<td><input></td>
+									<td>启用</td>
+									<td><input></td>
+								</tr>
+								<tr>
+									<td>全称</td>
+									<td colspan="3"><input></td>
+								</tr>
+								<tr>
+									<td>属性</td>
+									<td><input></td>
+									<td>特征</td>
+									<td><input></td>
+								</tr>
+								<tr>
+									<td>类型</td>
+									<td><input></td>
+									<td>是否LOF</td>
+									<td><input></td>
+								</tr><tr>
+									<td>是否ETF</td>
+									<td><input></td>
+									<td>所在标志</td>
+									<td><input></td>
+								</tr>
+								<tr>
+									<td>交易</td>
+									<td><input></td>
+									<td>状态</td>
+									<td><input></td>
+								</tr>
+							</table>
+				</div>
+			</div>
+			<div class="section"><h2>第二个</h2>
+				<table class="table table-hover">
+								<tr>
+									<td>全称</td>
+									<td colspan="3"><input></td>
+								</tr>
+								<tr>
+									<td>属性</td>
+									<td><input></td>
+									<td>特征</td>
+									<td><input></td>
+								</tr>
+								<tr>
+									<td>是否ETF</td>
+									<td><input></td>
+									<td>所在标志</td>
+									<td><input></td>
+								</tr>
+								<tr>
+									<td>场所</td>
+									<td><input></td>
+									<td>状态</td>
+									<td><input></td>
+								</tr>
+								<tr>
+									<td>等级</td>
+									<td><input></td>
+									<td>结算</td>
+									<td><input></td>
+								</tr>
+								
+							</table>
+			</div></br></br>
+			<div class="section"><h2>第三个</h2>
+				<div id="page1">
+							<table class="table table-hover">
+								<tr>
+									<td>代码</td>
+									<td><input></td>
+									<td>TA类型</td>
+									<td><input></td>
+								</tr>
+								<tr>
+									<td>产品简称</td>
+									<td><input></td>
+									<td>启用</td>
+									<td><input></td>
+								</tr>
+								<tr>
+									<td>产品全称</td>
+									<td colspan="3"><input></td>
+								</tr>
+								<tr>
+									<td>基金属性</td>
+									<td><input></td>
+									<td>基金特征</td>
+									<td><input></td>
+								</tr>
+								<tr>
+									<td>基金类型</td>
+									<td><input></td>
+									<td>是否LOF基金</td>
+									<td><input></td>
+								</tr><tr>
+									<td>是否ETF基金</td>
+									<td><input></td>
+									<td>基金所在证交所标志</td>
+									<td><input></td>
+								</tr>
+								
+							</table>
+				</div>
+			</div></br></br>
+			<div class="section"><h2>第四个</h2></div></br></br>
+			<div class="section"><h2>第五个</h2></div></br></br>
+			<div class="section"><h2>第六个</h2></div></br></br>
+			<div class="section"><h2>第七个</h2></div></br></br>
+			<div class="section"><h2>第八个</h2></div></br>
+			<div class="section"><h2>第九个</h2></div>
+		</div><!-- [END] #main -->
+	</div><!-- [END] #wrapper -->
+	<div class="remind">
+		红色星号<span style="color:red">*</span>表示必填，<span style="color:red">红色字体</span>表示变动。
+	</div>
+</body>
+</html>
