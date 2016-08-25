@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html language="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>源数据导入对比</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/dataImport.css">
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/pagescroller.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script  src="js/lib-debug.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#wrapper').hide();
+		$('.arrow_back').hide();
+		
+	})
+</script>
+</head>
+
+<body background="#fff">
+
+	<div id="index">
+		<div id="sel">
+			<label for="btn"><h5 style="font-size:16px">选择导入的数据:&nbsp;&nbsp;</h5></label>
+			<select class="tc-15-select">
+				<option>外网一</option>
+				<option>外网二</option>
+				<option>外网三</option>
+				<option>外网四</option>
+			</select>
+		</div>
+		<input type="button" id="btn" class="btn-confirm" value="导入"  onclick="dataImport()"/>
+	</div>
+	<div id="wrapper">
+		<table class="table table-hover" style="text-align:center;">
+			<thead>
+				<tr height="60px">
+					<th width="200px"></th>
+					<th width="190px" class="odd" style="border-top-left-radius:10px;border-top-right-radius:10px;text-align:center;"><h5><img src="img/dataCurrent.png" width="25px"><b>&nbsp;当前值</b></h5></th>
+					<th width="60px"></th>
+					<th width="190px" class="even" style="border-top-left-radius:10px;border-top-right-radius:10px;text-align:center;"><h5><img src="img/import.png" width="25px"><b>&nbsp;对比值</b></h5></th>
+				</tr>
+			</thead>
+			<div class="inter"></div>
+			<tbody>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第一项</th>
+					<td width="190px" class="odd">12</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第二项</th>
+					<td width="190px" class="odd">20160819</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">20160819</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第三项</th>
+					<td width="190px" class="odd">123</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第四项</th>
+					<td width="190px" class="odd">12</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第五项</th>
+					<td width="190px" class="odd">12</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第六项</th>
+					<td width="190px" class="odd">123</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第七项</th>
+					<td width="190px" class="odd">123</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第八项</th>
+					<td width="190px" class="odd">123</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第九项</th>
+					<td width="190px" class="odd">123</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第十项</th>
+					<td width="190px" class="odd">123</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第十一项</th>
+					<td width="190px" class="odd">123</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第十二项</th>
+					<td width="190px" class="odd">123</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第十三项</th>
+					<td width="190px" class="odd">123</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr>
+					<th width="200px" style="text-indent:30px;"><img src="img/item.png" width="15px">&nbsp;第十四项</th>
+					<td width="190px" class="odd">123</td>
+					<td width="60px">
+						<a class="arrow" href="#" onclick="dataCopy(this)">
+							<img src="img/arrow.png" width="20px" title="覆盖">
+						</a>
+						<a class="arrow_back" href="#" onclick="dataBack(this)">
+							<img src="img/arrow_back.png" width="20px" title="撤回">
+						</a>
+					</td>
+					<td width="190px" class="even">123</td>
+				</tr>
+				<tr height="380px" style="background: #fff"></tr>
+			</tbody>
+		</table>
+		
+		<div class="opr">
+			<input class="btn" type="button" value="全部覆盖" onclick="copyAll()"/>
+			<input class="btn" type="button" value="保存修改" onclick="save()"/>
+		</div>
+	</div>
+	
+	<script>
+		var dataInit=[];
+		var i=0;
+		$('#wrapper td.odd').each(function(){
+			dataInit[i]=$(this).text();
+			i++;
+		})
+		
+		function dataImport(){
+			$('#index').hide();
+			$('#wrapper').slideDown(2000);
+		}
+		
+		$('#wrapper td.odd').each(function(index,item){
+			var self=$(this);
+			if(self.text()!=self.next().next().text()){
+				self.parent('tr').css('background','#f0f0f0');
+				self.css('color','red');
+				self.next().children().show();
+			}
+			else
+				self.next().children().hide();
+ 		});
+
+		function dataCopy(item){
+			//点击箭头复制源数据
+			var currentData=$(item).parent('td').prev();
+			var prevData=$(item).parent('td').next().text();
+			currentData.html(prevData);
+			currentData.css('color','black');
+			$(item).parents('tr').css('background','#fff');
+			$(item).hide();
+			$(item).next().show();
+		}
+		
+		function dataBack(item){
+			//点击回退键撤销修改数据
+			var num=$(item).parents('tr').index();
+			var currentData=$(item).parent('td').prev();
+			currentData.html(dataInit[num]);
+			currentData.css('color','red');
+			$(item).hide();
+			$(item).prev().show();
+			$(item).parents('tr').css('background','#f0f0f0');
+		}
+		
+		function copyAll(){
+		    //点击全部覆盖
+			$('.odd:gt(0)').each(function(){
+				if($(this).text()!=$(this).next().next().text()){
+					dataCopy($(this).next().children(0));
+				}
+			})
+		}
+		
+		function save(){
+			//点击保存
+		}
+	</script>
+</body>
+</html>

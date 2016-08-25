@@ -1,0 +1,173 @@
+@CHARSET "UTF-8";
+*{margin:0px;padding:0px;}
+html,body{
+	width:100%;
+	height:100%;
+	font-family:微软雅黑;
+}
+
+#index{
+	padding-top:90px;
+	height:400px;
+	
+}
+#sel{
+	padding:80px;
+	padding-left:160px;
+	background:#f0f6f6;
+}
+
+/*按钮确定导入数据*/
+.btn-confirm{
+	margin-left:290px;
+	margin-top:20px;
+    display: block;
+    width: 130px;
+    height:30px;
+    border-radius: 3px;
+    font-size: 16px;
+    color: #0061c1;
+    background: transparent;
+    border:1.5px solid #0061c1;
+    outline: none;
+    cursor: pointer;
+}
+.btn-confirm:hover, .btn-confirm:active{
+    background-color: #0061c1;
+    color:#fff;
+}
+
+/*外部wrapper块要大于table的大小，不然格式会乱跳*/
+#wrapper{
+	margin:30px;
+}
+.odd{
+	background:rgba(90,172,227,0.1);
+}
+.even{
+	background:rgba(100,0,200,0.05);
+	border-left:15px solid transparent;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, 
+.table>tfoot>tr>td, .table>tfoot>tr>th,
+ .table>thead>tr>td, .table>thead>tr>th{
+ 	border-top:0px;
+ }
+ 
+ /*select框效果*/
+.tc-15-select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #d1d2d3;
+	border-radius: 3px;
+	background-color: #fff;
+	background-image: url(img/select.png?max_age=19830212&d=20151112183812);
+	background-repeat: no-repeat;
+	background-position: right center;
+	box-shadow: none;
+	color: #171d25;
+	font-size: 16px;
+	cursor: pointer;
+	height: 35px;
+	padding: 8px 24px 7px 6px;
+	vertical-align: middle;
+	line-height: 1;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	min-width: 200px;
+}
+
+.tc-15-select::-ms-expand {
+	display: none
+}
+
+.tc-15-select:hover,.tc-15-select:focus {
+	border-color: #0071ce;
+	background-color: #fff;
+	outline: 0 none;
+}
+
+.tc-15-select[disabled] {
+	cursor: default;
+	background-color: #e8e8e8;
+	background-image: url(img/select-disabled.png?max_age=19830212&d=20151112183812);
+	border-color: #d5d5d5;
+	color: #a2a2a2
+}
+
+.tc-15-select.m,.tc-15-rich-dialog .tc-15-select-wrap .tc-15-select,.tc-15-select-wrap.m .tc-15-select {
+	height: 27px;
+	padding: 5px 24px 4px 6px;
+	font-size: 12px;
+	min-width: 150px
+}
+
+.tc-15-select {
+	padding: 8px 8px 7px 6px\9
+}
+.tc-15-select option {padding-top: 8px; padding-bottom: 7px;height: 32px;}
+
+.tc-15-select.m,.tc-15-rich-dialog .tc-15-select-wrap .tc-15-select,.tc-15-select-wrap.m .tc-15-select {
+	padding: 5px 5px 4px 6px\9
+}
+
+#wrapper .opr{
+	width:100%;
+	height:300px;
+	background:#fff;
+	position:fixed;
+	top:400px;
+	padding-left:400px;
+	z-index:2;
+}
+
+.btn{
+	margin-top:10px;
+	width:120px;
+	height:35px;
+	background:#e9e9e9;
+}
+
+/*固定表头，内容滚动*/
+
+#wrapper table{
+	width:100%;
+	table-layout:fixed;
+}
+#wraaper table tbody{
+	top:0px;
+	height:300px;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+#wrapper table tr{
+	display:block;
+}
+#wrapper table thead{
+	display:block;
+	position:fixed;
+	background:#fff;
+	top:0px;
+	padding-top:10px;
+}
+
+.inter{
+	width:100%;
+	height:42px;
+}
+
+/*
+#wrapper table thead tr th{
+	
+	overflow:hidden;
+	white-space: nowrap;
+}
+
+#wraaper table tbody tr td{
+	height: 150px;
+	overflow: hidden;
+}
+*/
