@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		
+		<style type="text/css">
+		
+		</style>
+		<script>
+			//当网页结构 图片 样式 加载完成之后 执行
+			window.onload=function(){
+				/* 三种基本的获取的方式 */
+			//通过 id
+			//document.getElementById('box').innerHTML="hello world";
+			
+			//通过class   Elements复数
+			//document.getElementsByClassName('wrap')[2].innerHTML="good night";
+			
+			//通过标签名称
+				document.getElementsByTagName('div')[3].innerHTML="帅呆了";
+				
+				                                                         //绑定点击事件  事件处理函数
+				document.getElementsByTagName('div')[3].onclick=function(){
+					alert("太帅了！");
+				}
+				//通过JS来修改网页元素的内容
+				
+				document.write("我是一个有梦想的人");//页面body里面只剩下这句话
+				
+			}
+			
+			/*
+					写代码注意：
+						1，Tab缩进
+						2，JS代码区分大小写
+						3，英文半角输入法下写代码
+			*/
+		</script>
+	</head>
+
+	<body>
+		<div id="box" class="wrap"></div>
+		<div class="wrap"></div>
+		<div class="wrap"></div>
+		<div class="wrap"></div>
+		<script>
+		    /*三种弹窗 */
+			//单行注释  
+			//alert("hello world~");
+			//confirm("你想关闭吗？");//弹窗，确认/关闭
+			/*多行注释
+			弱类型语言
+			prompt("good night!");  //prompt应用，可以做日历
+			*/
+			
+			//文档 的 获取 元素 通过 ID名称 里面的内容 赋值为 xxx
+			
+			/* 三种基本的获取的方式 */
+			//通过 id
+			//document.getElementById('box').innerHTML="hello world";
+			
+			//通过class   Elements复数
+			//document.getElementsByClassName('wrap')[2].innerHTML="good night";
+			
+			//通过标签名称
+			//document.getElementsByTagName('div')[3].innerHTML="帅呆了";
+			
+			document.write("我是一个有梦想的人");//显示在body script之后
+		</script>
+	</body>
+</html>
+
+
