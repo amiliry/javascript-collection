@@ -15,8 +15,12 @@
 
 	<body>
 		<div id="box" class="wrap"></div>
+		<button id="btn1">按钮</button>
+		<button id="btn2">按钮</button>
+		<button id="btn3">按钮</button>
+		
 		<script type="text/javascript">
-			//var a=123;
+			var a=123;  //全局变量
 			/*
 					数据类型:
 							number数字  
@@ -52,9 +56,59 @@
 					var c={ }; // 一种强大的数据格式 json 专门为js诞生     可以跨平台
 					alert(typeof c);   // object对象
 					
+					var c=null;// 空对象类型
+					var d=0;
+					alert(typeof c);  //   object对象
+					document.onclick=function(){
+						var c=1;   //局部变量
+						d=1;
+						alert(d)
+					};
+					//alert(d);
+					//  document.onclick=null;   //把事件取消
+					
 					var d=function(){};
 					alert(typeof d);     // function函数
-			*/
+					
+					/*
+							//  匿名函数
+							var d=function(){ alert("一个有梦想的人"); }
+							d();
+							
+							//  有名函数
+							fn();                //  加括号直接执行
+							function  fn(){
+								alert("一个有梦想的人");
+							};
+					*/
+					
+					
+					/*
+					document.onclick=function  fn(){
+						alert("一个有梦想的人");
+					};
+					*/
+					
+					/*
+					btn1.onclick=function  fn(){
+						alert("一个有梦想的人");
+					};
+					btn2.onclick=function  fn(){
+						alert("一个有梦想的人");
+					};
+					btn3.onclick=function  fn(){
+						alert("一个有梦想的人");
+					};
+					*/
+					//等价于
+					/*
+					btn1.onclick=fn;//绑定事件，不加括号 点击之后才执行函数
+					btn2.onclick=fn;
+					btn3.onclick=fn;
+					function  fn(){
+						alert("一个有梦想的人");   //事件处理函数
+					};
+					*/
 			/*
 					var e;
 					alert(typeof e);  //  undifined未定义的
@@ -68,10 +122,13 @@
 			/*
 					var f=false;
 					alert(typeof f);   //  boolean布尔类型
+					
 			*/
 			
-			var f=null;
-			alert(typeof (f));
+			
+			
+			
+			
 			
 		</script>
 	</body>

@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		
+		<style type="text/css">
+			#ul2 li{
+				border:1px solid blue
+			}
+		</style>
+		
+	</head>
+
+	<body>
+		<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+		</ul>
+		
+		<ul id="ul2">
+				<li><b>B标签</b></li>
+				<li></li>
+				<li></li>
+		</ul>
+		<script type="text/javascript">
+		/*
+			var oUl2=document.getElementById("ul2");
+			var aB = oUl2.getElementsByTagName("b")[0];
+			aB.innerHTML="我是B标签";    //替换 修改aB里面的HTML代码
+			alert(aB.innerHTML);
+			alert(aLi.length);
+		*/
+			
+			/*
+				aB.innerHTML  读取aB里面的HTML代码
+			*/
+		</script>
+		
+		<input type="text" id="inp" />
+		<div id="box" class="on" abc="这是自定义数据" style="border:1px solid blue;"></div>
+		<input type="button" id="btn"  value="按钮"/>
+		<a href="https://baidu.com">A标签</a>
+		<audio src="a.mp3" loop="loop" id="ad"></audio>
+		<video src="b.mp4" autoplay="autoplay" id="vd"></video>
+		
+		<script type="text/javascript">
+			//btn.onclick=function(){
+			//	alert(btn.value);
+			//}
+			
+			var oBox=document.getElementById("box");
+			var aA=document.getElementsByTagName("a")[0];
+			//  oBox.id="wrap";  // 修改属性的值 可写的
+			//  alert(oBox.id);  // 读取属性的值  可读的
+			
+			//  oBox.className="active";
+			//  alert(oBox.className);
+			
+			//  alert(oBox.abc);  //  获取不了
+			
+			//  alert(oBox.style);
+			//  aA.href="http://web.tanzhouedu.com";
+			//  alert(aA.href);
+			
+			//  alert(ad.loop);   //标准下  boolean       true
+			//  alert(vd.autoplay);      //         true
+			
+			alert(inp.type);
+			//官方承认的属性可以正常读写
+			
+			/*
+						1,获取自定义属性：
+						  .getAttribute()
+						2,设置自定义属性：
+						.setAttribute("abc","hello");
+			*/
+			//alert(oBox.getAttribute("abc")); 
+			
+			//  oBox.setAttribute("abc","hello");
+			//  oBox.removeAttribute("abc");
+			
+			//alert(oBox.getAttribute("id"));
+			//oBox.setAttribute("class","active")
+			alert(oBox.getAttribute("style"));
+		</script>
+	</body>
+</html>
+
+
