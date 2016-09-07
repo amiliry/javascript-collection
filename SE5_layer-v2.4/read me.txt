@@ -1,2 +1,25 @@
 插件
 弹出框
+
+1，//弹出源数据导入对比界面
+			dataImport:function(item){
+				var self = this;
+				return function(evt){
+					 layer.open({
+					      type: 2,
+					      title:['', 'background:#fff;border:0px'],  //修改头部
+					      shadeClose: true,
+					      shade: false,
+					      maxmin: false,
+					      area: ['700px', '500px'],
+					      content:'../../dataImport.jsp',
+					    });
+				};
+			}
+
+title: '<img style="width:20px; padding-top:10px" src="../../img/settings.png">'+"&nbsp&nbsp"+item["PROD_NAME"],
+
+title支持三种类型的值，若你传入的是普通的字符串，如title :'我是标题'，那么只会改变标题文本；若你还需要自定义标题区域样式，那么你可以title: ['文本', 'font-size:18px;']，数组第二项可以写任意css样式；如果你不想显示标题栏，你可以title: false
+
+2，content: '../../agencyManage.jsp?type=A&prodCode='+item.PROD_CODE
+传参
