@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+	<meta type="description" content="内容">
+	<meta type="keyword" content="关键字1，关键字2">
+    <title>音乐播放器</title>
+	<style>
+		/*通用标签*/
+		*{margin:0px;padding:0px;}
+		
+		#photo{
+			width:320px;
+			height:600px;
+			background-color:#000;
+			margin:10px auto;
+		}
+		.top{
+			width:320px;
+			height:23px;
+			background:url(images/1.png);
+		}
+		.title{
+			width:320px;
+			height:30px;
+			background:url(images/2.png);
+			color:#ccc;
+			text-align:center;
+			font-size:22px;
+			font-weight:500;
+			line-height:30px;
+		}
+		.singer{
+			width:320px;
+			height:30px;
+			color:#ddd;
+			text-align:center;
+			font-size:14px;
+			line-height:30px;
+
+		}
+		.play{
+			width:190px;
+			height:190px;
+			background:url(images/3.png);
+			margin:20px auto;
+			border-radius:50%;
+		}
+		/*用一个类名来保存旋转的功能*/
+		.rotate{
+			animation:rot 5s linear infinite;
+			/*css3自定义动画：名称 时间 速度曲线（匀速） 无限重复*/
+		}
+		@keyframes rot{
+			/*css3关键帧*/
+			from{transform:rotate(0deg);} /*css3变换：旋转*/
+			to{transform:rotate(360deg);}
+		}
+		.lrc{
+			width:300px;
+			height:264px;
+			/*border:1px solid red;*/
+			margin:auto;
+			color:#ccc;
+			text-align:center;
+			font-size:12px;
+			font-weight:500;
+			overflow:hidden;
+			line-height:20px;
+		}
+		
+		.content{
+			position:relative;
+			left:0px;
+			top:1px;
+		}
+		#lrc{
+			display:none;
+		}
+	</style>
+</head>
+	<body>
+		<!-- 盒子标签 div 宽度 高度 位置-->
+		<div id="photo">
+			<div class="top"></div>
+			<div class="title">致爱</div>
+			<div class="singer">鹿晗</div>
+			<div class="play"></div>
+			<div class="lrc">
+				<div class="content"></div>
+			</div>
+		</div>
+		<audio src="鹿晗-致爱.mp3" id="myMusic"></audio>
+		<textarea id="lrc">
+			[00:00.45] 致爱 Your Song - 鹿晗
+			[00:01.15] 词：朱婧汐Jing
+			[00:01.35] 曲：MatthewTishler,JeannieLurie
+			[00:02.56] 在我眼中
+			[00:03.25] 在我心中
+			[00:05.90] 有你的出现就有蔚蓝天空
+			[00:11.27] 梦的城堡
+			[00:13.27] 用爱守候
+			[00:15.78] 最美好的时光在这停留
+			[00:21.94] 就让我陪在你身旁
+			[00:24.59] 当你快乐或是绝望
+			[00:27.29] 就像你
+			[00:28.19] 陪着我一样
+			[00:31.74] 世界变化不停
+			[00:33.89] 人潮川流不息
+			[00:36.54] 我只想每个落日
+			[00:39.24] 身边都有你
+			[00:42.98] 如果有一天你会
+			[00:44.50] 忘记我们的约定
+			[00:47.95] 没关系
+			[00:49.57] 至少有这首歌
+			[00:51.50] 我再唱给你听
+			[00:59.49] 孤单星球
+			[01:01.89] 转了多久
+			[01:03.64] 才遇到了你
+			[01:05.84] 靠近在我左右
+			[01:09.89] 青春汹涌
+			[01:12.65] 成长会痛
+			[01:14.30] 你皱起眉头
+			[01:16.55] 让我给你温柔
+			[01:20.85] 我们在昨天的经历
+			[01:23.20] 是彼此明天的勇气
+			[01:26.10] 因为你未来不畏惧
+			[01:30.32] 世界变化不停
+			[01:32.67] 人潮川流不息
+			[01:35.27] 我只想每个落日
+			[01:37.67] 身边都有你
+			[01:40.73] 如果有一天你会
+			[01:43.18] 忘记我们的约定
+			[01:46.53] 没关系
+			[01:47.64] 至少有这首歌
+			[01:50.24] 我再唱给你
+			[01:52.84] 可能未来的你会
+			[01:55.24] 为另一个谁哭泣
+			[01:57.85] 请记得
+			[01:59.20] 还有一首歌
+			[02:03.35] Ill only sing for you girl
+			[02:06.55] Its your song
+			[02:11.61] Oh~yeah
+			[02:13.36] 世界变化不停
+			[02:15.41] 人潮川流不息
+			[02:17.96] 我只想每个落日
+			[02:20.56] 身边都有你
+			[02:23.56] 如果有一天你会
+			[02:25.91] 忘记我们的约定
+			[02:28.71] 没关系
+			[02:30.31] 至少有这首歌
+			[02:32.86] 我再唱给你听
+			[02:38.86] 再唱给你听
+			[02:44.21] Babe its your song
+			[02:49.87] Babe its your song
+		</textarea>
+
+		<script>
+			//获取点击元素
+			var playBtn=document.getElementsByClassName("play")[0];
+			var con=document.getElementsByClassName("content")[0];
+			var myMusic=document.getElementById("myMusic");
+			//同一个按钮实现两个功能：做标记存储点击的状态
+			var onOff=true;//自定义一个开关
+			playBtn.onclick=function(){//点击实现暂停功能
+				if(onOff){
+					myMusic.play();
+					onOff=false;
+					this.className="play rotate";
+				}
+				else{
+					myMusic.pause();
+					onOff=true;
+					this.className="play";
+				}
+			}
+
+			//获取歌词文本
+			var txt=document.getElementById("lrc");
+			var lrc=txt.value;
+			var lrcArr=lrc.split("[");//去除左半边括号
+			var html="";//定义空变量保存文本
+			for(var i=0;i<lrcArr.length;i++)
+			{
+				var arr=lrcArr[i].split("]");//arr[0]都是时间，[1]都是歌词
+				var allTime=arr[0].split(".");//第一位是分钟秒钟，去掉毫秒
+				var time = allTime[0].split(":");
+				var timer = time[0]*60+time[1]*1;
+				var text=arr[1];
+				if(text)
+				{
+					html+="<p id="+timer+">"+text+"</p>";
+				}
+				con.innerHTML=html;
+			}
+
+			var oP=con.getElementsByTagName("p");
+			var num=0;
+			//监听音乐播放进度，实现歌词变色
+			myMusic.addEventListener("timeupdate",function(){
+				//获取当前播放时间
+				var curTime=parseInt(this.currentTime);
+				// console.log(curTime);
+				//把当前时间和P标签的id名进行对比，相同变字的颜色
+				if(document.getElementById(curTime))
+				{
+					for(var i=0;i<oP.length;i++){
+						oP[i].style.cssText=
+						"color:#ccc;font-size:12px;"
+					}
+					document.getElementById(curTime).style.cssText=
+					"color:rgb(240,100,111); font-size:18px;";
+					console.log(oP[num].id+"  --  "+curTime);
+					if(oP[num+5].id==curTime)
+					{
+						alert(con.style.top);
+						con.style.top=-(20*num)+"px";
+						num++;
+					}
+					
+				}
+			});
+
+			//监听歌曲结束，停止旋转
+			myMusic.addEventListener("ended",function(){
+				playBtn.className="play";
+				onOff=true;
+				con.style.top=0;
+				this.currentTime=0;
+			})
+		</script>
+	</body>
+</html>
